@@ -38,6 +38,8 @@ class Element {
     string getType() { return type; };
     int getMass() { return mass; };
     string getElectrons() { return electrons; };
+
+    json getJSON();
     
     // Сетеры
     void setName(string value) { name = value; };

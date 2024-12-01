@@ -31,10 +31,15 @@ ifstream& Element::readFromJson(ifstream& stream) {
 
     stream >> file;
 
-    for (int i=0; i < file["count"]; i++)
+    for (int i = 0; i < file["count"]; i++)
     {
         json value = file["values"][i];
-        
+
+        name      = value["name"];
+        symbol    = value["symbol"];
+        number    = value["number"];
+        mass      = value["mass"];
+        electrons = value["electrons"];
     }
 
     return stream;
@@ -42,6 +47,11 @@ ifstream& Element::readFromJson(ifstream& stream) {
 
 ofstream& Element::writeToJson(ofstream& stream){
 
+    json file;
+    file["values"].push_back(getJSON());
+
+    stream << file.dump(4);
+    
     return stream;
 }
 
@@ -55,4 +65,15 @@ void Element::shortDisplay(){
 
 bool Element::isType(string t){
     return type == t;
+}
+
+json Element::getJSON(){
+    json value;
+    value["name"] = name;
+    value["symbol"] = symbol;
+    value["number"] = number;
+    value["mass"] = mass;
+    value["electrons"] = electrons;
+
+    return value;
 }
