@@ -1,0 +1,13 @@
+{
+    "count": 1,
+    "values": [
+        {
+            "name": "Element #1",
+            "symbol": "YSU",
+            "number": 11,
+            "type": "metal",
+            "mass": 10,
+            "electrons": "1"
+        }
+    ]
+}
