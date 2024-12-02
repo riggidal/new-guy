@@ -13,12 +13,12 @@ void displayAllElements(Element *&elements, int &size){
          << setw(20) << "Название " 
          << setw(10) << " Символ " 
          << setw(10) << " Номер " 
-         << setw(20) << " Тип " 
+         << setw(15) << " Тип " 
          << setw(15) << " Атомная масса " 
          << " Электронная конфигурация " 
          << endl;
 
-    cout << string(80, '-') << endl; // Разделительная линия
+    cout << string(100, '-') << endl; // Разделительная линия
 
     for (int i = 0; i < size; i++)
     {

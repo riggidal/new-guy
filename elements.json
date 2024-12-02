@@ -7,7 +7,7 @@
             "number": 1,
             "type": "non-metal",
             "mass": 1,
-            "electrons": "1 уровень - 1;"
+            "electrons": "1"
         },
         {
             "name": "Гелий",
@@ -15,7 +15,7 @@
             "number": 2,
             "type": "non-metal",
             "mass": 4,
-            "electrons": "1 уровень - 2;"
+            "electrons": "2"
         },
         {
             "name": "Литий",
@@ -23,7 +23,7 @@
             "number": 3,
             "type": "non-metal",
             "mass": 7,
-            "electrons": "1 уровень - 1; 2 уровень - 2;"
+            "electrons": "1-2"
         },
         {
             "name": "Бор",
@@ -31,7 +31,7 @@
             "number": 5,
             "type": "non-metal",
             "mass": 10,
-            "electrons": "1 уровень - 3; 2 уровень - 2;"
+            "electrons": "1-2"
         },
         {
             "name": "Натрий",
@@ -39,7 +39,7 @@
             "number": 11,
             "type": "non-metal",
             "mass": 23,
-            "electrons": "1 уровень - 1; 2 уровень - 8; 3 уровень - 2;"
+            "electrons": "1-8-2"
         },
         {
             "name": "Алюминий",
@@ -47,7 +47,7 @@
             "number": 13,
             "type": "metal",
             "mass": 27,
-            "electrons": "1 уровень - 3; 2 уровень - 8; 3 уровень - 2;"
+            "electrons": "3-8-2"
         },
         {
             "name": "Калий",
@@ -55,7 +55,7 @@
             "number": 19,
             "type": "metal",
             "mass": 39,
-            "electrons": "1 уровень - 1; 2 уровень - 8; 3 уровень - 8;"
+            "electrons": "1-8-8"
         },
         {
             "name": "Скандий",
@@ -63,7 +63,7 @@
             "number": 21,
             "type": "non-metal",
             "mass": 45,
-            "electrons": "1 уровень - 2; 2 уровень - 9; 3 уровень - 8;"
+            "electrons": "2-9-8"
         },
         {
             "name": "Медь",
@@ -71,7 +71,7 @@
             "number": 29,
             "type": "metal",
             "mass": 63,
-            "electrons": "1 уровень - 1; 2 уровень - 18; 3 уровень - 8;"
+            "electrons": "1-18-8"
         },
         {
             "name": "Галий",
@@ -79,7 +79,7 @@
             "number": 31,
             "type": "non-metal",
             "mass": 69,
-            "electrons": "1 уровень - 3; 2 уровень - 18; 3 уровень - 8;"
+            "electrons": "3-18-8"
         }
     ]
 }

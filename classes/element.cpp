@@ -29,14 +29,12 @@ void Element::readFromConsole(){
 
 void Element::display(){
     cout << left 
-        << setfill('.')
-        << ""
         << setw(20) << name
         << setw(10) << symbol
         << setw(10) << number
-        << setw(20) << type
+        << setw(15) << type
         << setw(15) << fixed << setprecision(1) << mass
-        << setw(30) << electrons 
+        << electrons 
         << endl;
 }
 
