@@ -1,0 +1,85 @@
+{
+    "count": 10,
+    "values": [
+        {
+            "name": "Водород",
+            "symbol": "H",
+            "number": 1,
+            "type": "non-metal",
+            "mass": 1,
+            "electrons": "1"
+        },
+        {
+            "name": "Гелий",
+            "symbol": "He",
+            "number": 2,
+            "type": "non-metal",
+            "mass": 4,
+            "electrons": "2"
+        },
+        {
+            "name": "Литий",
+            "symbol": "Li",
+            "number": 3,
+            "type": "non-metal",
+            "mass": 7,
+            "electrons": "1-2"
+        },
+        {
+            "name": "Бор",
+            "symbol": "B",
+            "number": 5,
+            "type": "non-metal",
+            "mass": 10,
+            "electrons": "1-2"
+        },
+        {
+            "name": "Натрий",
+            "symbol": "Na",
+            "number": 11,
+            "type": "non-metal",
+            "mass": 23,
+            "electrons": "1-8-2"
+        },
+        {
+            "name": "Алюминий",
+            "symbol": "Al",
+            "number": 13,
+            "type": "metal",
+            "mass": 27,
+            "electrons": "3-8-2"
+        },
+        {
+            "name": "Калий",
+            "symbol": "K",
+            "number": 19,
+            "type": "metal",
+            "mass": 39,
+            "electrons": "1-8-8"
+        },
+        {
+            "name": "Скандий",
+            "symbol": "Sc",
+            "number": 21,
+            "type": "non-metal",
+            "mass": 45,
+            "electrons": "2-9-8"
+        },
+        {
+            "name": "Медь",
+            "symbol": "Cu",
+            "number": 29,
+            "type": "metal",
+            "mass": 63,
+            "electrons": "1-18-8"
+        },
+        {
+            "name": "Галий",
+            "symbol": "Ga",
+            "number": 31,
+            "type": "non-metal",
+            "mass": 69,
+            "electrons": "3-18-8"
+        }
+    ]
+}
