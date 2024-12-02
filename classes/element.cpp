@@ -28,14 +28,13 @@ void Element::readFromConsole(){
 }
 
 void Element::display(){
-    cout << left 
-        << setw(20) << name
-        << setw(10) << symbol
-        << setw(10) << number
-        << setw(15) << type
-        << setw(15) << fixed << setprecision(1) << mass
-        << electrons 
-        << endl;
+    cout
+        << "Наименование:\t" << name << endl
+        << "Символ:\t\t" << symbol << endl
+        << "Номер:\t\t" << number << endl
+        << "Тип:\t\t" << type << endl
+        << "Масса\t\t" << fixed << setprecision(1) << mass << endl
+        << "Элекронная конфигурация: " << electrons << endl;
 }
 
 void Element::shortDisplay(){
