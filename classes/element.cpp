@@ -1,7 +1,8 @@
 #include "element.hpp"
-
 // Конструктор по умолчанию
 Element::Element() : name(""), symbol(""), number(0), type(""), mass(0), electrons("") {}
+
+Element::Element(json value) : name(value["name"]), symbol(value["symbol"]), number(value["number"]), type(value["type"]), mass(value["mass"]), electrons(value["electrons"]) {}
 
 void Element::readFromConsole(){
     cout << "Введите название элемента: ";
@@ -26,37 +27,17 @@ void Element::readFromConsole(){
     cin >> electrons;
 }
 
-ifstream& Element::readFromJson(ifstream& stream) {
-    json file;
-
-    stream >> file;
-
-    for (int i = 0; i < file["count"]; i++)
-    {
-        json value = file["values"][i];
-
-        name      = value["name"];
-        symbol    = value["symbol"];
-        number    = value["number"];
-        mass      = value["mass"];
-        electrons = value["electrons"];
-    }
-
-    return stream;
-}
-
-ofstream& Element::writeToJson(ofstream& stream){
-
-    json file;
-    file["values"].push_back(getJSON());
-
-    stream << file.dump(4);
-    
-    return stream;
-}
-
 void Element::display(){
-    cout << left << setw(20) << name << setw(10) << symbol << setw(10) << number << setw(15) << type << setw(15) << fixed << setprecision(2) << mass << electrons << endl;
+    cout << left 
+        << setfill('.')
+        << ""
+        << setw(20) << name
+        << setw(10) << symbol
+        << setw(10) << number
+        << setw(20) << type
+        << setw(15) << fixed << setprecision(1) << mass
+        << setw(30) << electrons 
+        << endl;
 }
 
 void Element::shortDisplay(){
