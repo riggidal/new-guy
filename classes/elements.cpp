@@ -6,22 +6,22 @@
 
 using namespace std;
 
-ElementContainer::ElementContainer(size_t initialCapacity)
+ElementContainer::ElementContainer(int initialCapacity)
     : capacity(initialCapacity), size(0) {
     elements = new Element*[capacity];
 }
 
 ElementContainer::~ElementContainer() {
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         delete elements[i];
     }
     delete[] elements;
 }
 
 void ElementContainer::resize() {
-    size_t newCapacity = capacity * 2;
+    int newCapacity = capacity * 2;
     Element** newElements = new Element*[newCapacity];
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         newElements[i] = elements[i];
     }
     delete[] elements;
@@ -36,19 +36,19 @@ void ElementContainer::addElement(const Element& element) {
     elements[size++] = new Element(element);
 }
 
-void ElementContainer::removeElement(size_t index) {
+void ElementContainer::removeElement(int index) {
     if (index >= size) {
         cout << "Выход за пределы индекса" << endl;
         return;
     }
     delete elements[index];
-    for (size_t i = index; i < size - 1; ++i) {
+    for (int i = index; i < size - 1; ++i) {
         elements[i] = elements[i + 1];
     }
     --size;
 }
 
-void ElementContainer::editElement(size_t index, const Element& updatedElement) {
+void ElementContainer::editElement(int index, const Element& updatedElement) {
     if (index >= size) {
         cout << "Выход за пределы индекса" << endl;
         return;
@@ -57,7 +57,7 @@ void ElementContainer::editElement(size_t index, const Element& updatedElement) 
 }
 
 void ElementContainer::findElementByMass(const int& mass) const {
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         if (elements[i]->getMass() == mass) {
             elements[i]->shortDisplay();
         }
@@ -68,7 +68,7 @@ void ElementContainer::writeToJSON(const string& filename) const {
     json jsonFile;
     jsonFile["count"] = size;
 
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         jsonFile["elements"].push_back(elements[i]->getJSON());
     }
 
@@ -92,8 +92,8 @@ void ElementContainer::readFromJSON(const string& filename) {
     json jsonFile;
     inFile >> jsonFile;
 
-    size_t newSize = jsonFile["count"];
-    for (size_t i = 0; i < size; ++i) {
+    int newSize = jsonFile["count"];
+    for (int i = 0; i < size; ++i) {
         delete elements[i];
     }
     delete[] elements;
@@ -110,13 +110,13 @@ void ElementContainer::readFromJSON(const string& filename) {
 }
 
 void ElementContainer::displayElements() const {
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         elements[i]->display();
     }
 }
 
 void ElementContainer::displayMetals() const {
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         if (elements[i]->isType("metal")) {
            elements[i]-> shortDisplay();
         }
