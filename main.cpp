@@ -103,7 +103,7 @@ public:
 
     void displayMenu() {
         std::cout << "\nМеню:\n";
-        for (int i = 0; i < menuText.size(); ++i) {
+        for (size_t i = 0; i < menuText.size(); ++i) {
             std::cout << i << ". " << menuText[i] << std::endl;
         }
     }
