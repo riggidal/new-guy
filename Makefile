@@ -3,7 +3,7 @@ CC = g++
 CFLAGS = -c -Wall -g 
 
 # Исходные файлы
-SOURCES = main.cpp classes/element.cpp elements.cpp utils.cpp
+SOURCES = main.cpp classes/element.cpp classes/elements.cpp
 
 # Объектные файлы
 OBJECTS = $(SOURCES:.cpp=.o)

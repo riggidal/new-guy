@@ -1,4 +1,4 @@
-#include "elements.hpp"
+#include "classes/elements.hpp"
 #include <iostream>
 #include <functional>
 #include <unordered_map>
@@ -60,7 +60,7 @@ private:
     }
 
     void editElement() {
-        size_t index;
+        int index;
         std::cout << "Введите номер элемента для изменения (0 - " << container.getSize() - 1 << "): ";
         while (!(std::cin >> index) || index >= container.getSize()) {
             std::cout << "Неверный индекс. Повторите ввод: ";
@@ -103,7 +103,7 @@ public:
 
     void displayMenu() {
         std::cout << "\nМеню:\n";
-        for (size_t i = 0; i < menuText.size(); ++i) {
+        for (int i = 0; i < menuText.size(); ++i) {
             std::cout << i << ". " << menuText[i] << std::endl;
         }
     }
