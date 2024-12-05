@@ -1,6 +1,5 @@
 #include "classes/element.hpp"  // Для работы с классом Element
-#include "elements.hpp"         // Для работы с массивом Element
-#include "utils.hpp"            // Для задач по варианту 18
+#include "classes/elements.hpp" // Для работы с массивом Element
 
 using namespace std;
 
