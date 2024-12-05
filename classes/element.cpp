@@ -7,21 +7,27 @@ Element::Element(json value) : name(value["name"]), symbol(value["symbol"]), num
 void Element::readFromConsole(){
     cout << "Введите название элемента: ";
     cin >> name;
+
     cout << "Введите символ элемента: ";
     cin >> symbol;
+
     cout << "Введите номер элемента: ";
     while (!(cin >> number) || number <= 0) {
         cout << "Неверный номер элемента. Введите целое число: ";
         cin.clear();
+        cin.ignore();
     }
     cout << "Введите тип элемента (metal или non-metal): ";
     while (cin >> type && type != "metal" && type != "non-metal") {
         cout << "Неверный тип элемента. Введите 'metal' или 'non-metal': ";
+        cin.clear();
+        cin.ignore();
     }
     cout << "Введите атомную массу элемента: ";
     while (!(cin >> mass) || mass <= 0) {
         cout << "Неверная атомная масса. Введите целое число: ";
         cin.clear();
+        cin.ignore();
     }
     cout << "Введите электронную конфигурацию элемента: ";
     cin >> electrons;

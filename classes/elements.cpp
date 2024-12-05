@@ -103,19 +103,22 @@ void ElementContainer::readFromJSON(const string& filename) {
     elements = new Element*[capacity];
 
     for (const auto& elementData : jsonFile["elements"]) {
-        Element* element = new Element(elementData);
-        addElement(*element);
-        delete element; // Temporary instance freed after addition
+        addElement(Element(elementData));
     }
 }
 
 void ElementContainer::displayElements() const {
+    cout << "Все элементы:" << endl;
+    cout << string(80, '=') << endl; // Разделитель
     for (size_t i = 0; i < size; ++i) {
         elements[i]->display();
+        cout << string(80, '=') << endl; // Разделитель
     }
 }
 
 void ElementContainer::displayMetals() const {
+    cout << "Все элементы (металы):" << endl;
+    cout << string(80, '=') << endl; // Разделитель
     for (size_t i = 0; i < size; ++i) {
         if (elements[i]->isType("metal")) {
            elements[i]-> shortDisplay();

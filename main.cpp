@@ -18,7 +18,8 @@ private:
             "Показать все элементы металлы",
             "Добавить элемент",
             "Изменить элемент",
-            "Записать в JSON файл"
+            "Записать в JSON файл",
+            "Найти элемент по массе"
         };
 
         menuOptions = {
@@ -28,7 +29,8 @@ private:
             {3, [this]() { displayMetals(); }},
             {4, [this]() { addElement(); }},
             {5, [this]() { editElement(); }},
-            {6, [this]() { writeToJSON(); }}
+            {6, [this]() { writeToJSON(); }},
+            {7, [this]() { findByMass(); }}
         };
     }
 
@@ -75,6 +77,17 @@ private:
         std::cout << "Введите имя файла для записи: ";
         std::cin >> filename;
         container.writeToJSON(filename);
+    }
+
+    void findByMass() {
+        int mass = 0;
+        cout << "Введите массу элемента: ";
+        while (!(cin >> mass) || mass <= 0) {
+            cout << "Неверная масса. Введите целое число: ";
+            cin.clear();
+            cin.ignore();
+        }
+        container.findElementByMass(mass);
     }
 
 public:
