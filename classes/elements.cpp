@@ -114,3 +114,11 @@ void ElementContainer::displayElements() const {
         elements[i]->display();
     }
 }
+
+void ElementContainer::displayMetals() const {
+    for (size_t i = 0; i < size; ++i) {
+        if (elements[i]->isType("metal")) {
+           elements[i]-> shortDisplay();
+        }
+    }
+}

@@ -32,6 +32,9 @@ public:
     // Отображение элементов
     void displayElements() const;
     void displayMetals() const;
+
+    // Геттеры
+    int getSize() { return size; }
 };
 
 #endif

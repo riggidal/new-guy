@@ -1,83 +1,117 @@
-#include "classes/element.hpp"  // Для работы с классом Element
-#include "classes/elements.hpp" // Для работы с массивом Element
+#include "elements.hpp"
+#include <iostream>
+#include <functional>
+#include <unordered_map>
 
-using namespace std;
+class Application {
+private:
+    ElementContainer container;
 
+    std::unordered_map<int, std::function<void()>> menuOptions;
+    std::vector<std::string> menuText;
+
+    void initializeMenu() {
+        menuText = {
+            "Чтение из консоли",
+            "Чтение из файла",
+            "Показать все элементы",
+            "Показать все элементы металлы",
+            "Добавить элемент",
+            "Изменить элемент",
+            "Записать в JSON файл"
+        };
+
+        menuOptions = {
+            {0, [this]() { readFromConsole(); }},
+            {1, [this]() { readFromJSON(); }},
+            {2, [this]() { displayAllElements(); }},
+            {3, [this]() { displayMetals(); }},
+            {4, [this]() { addElement(); }},
+            {5, [this]() { editElement(); }},
+            {6, [this]() { writeToJSON(); }}
+        };
+    }
+
+    void readFromConsole() {
+        Element element;
+        element.readFromConsole();
+        container.addElement(element);
+    }
+
+    void readFromJSON() {
+        std::string filename;
+        std::cout << "Введите имя файла: ";
+        std::cin >> filename;
+        container.readFromJSON(filename);
+    }
+
+    void displayAllElements() {
+        container.displayElements();
+    }
+
+    void displayMetals() {
+        container.displayMetals();
+    }
+
+    void addElement() {
+        Element element;
+        element.readFromConsole();
+        container.addElement(element);
+    }
+
+    void editElement() {
+        size_t index;
+        std::cout << "Введите номер элемента для изменения (0 - " << container.getSize() - 1 << "): ";
+        while (!(std::cin >> index) || index >= container.getSize()) {
+            std::cout << "Неверный индекс. Повторите ввод: ";
+        }
+        Element updatedElement;
+        updatedElement.readFromConsole();
+        container.editElement(index, updatedElement);
+    }
+
+    void writeToJSON() {
+        std::string filename;
+        std::cout << "Введите имя файла для записи: ";
+        std::cin >> filename;
+        container.writeToJSON(filename);
+    }
+
+public:
+    Application() {
+        initializeMenu();
+    }
+
+    void run() {
+        int select = -1;
+        do {
+            displayMenu();
+            std::cout << "Выберите номер (любое другое число для выхода): ";
+            if (!(std::cin >> select)) {
+                select = -1;
+            }
+            auto it = menuOptions.find(select);
+            if (it != menuOptions.end()) {
+                it->second(); // Invoke the selected menu option
+            } else {
+                std::cout << "Выход из программы." << std::endl;
+                break;
+            }
+            std::cout << std::endl;
+        } while (select >= 0);
+    }
+
+    void displayMenu() {
+        std::cout << "\nМеню:\n";
+        for (size_t i = 0; i < menuText.size(); ++i) {
+            std::cout << i << ". " << menuText[i] << std::endl;
+        }
+    }
+};
 
 int main() {
-  setlocale(LC_ALL, "Russian");
-
-  int size = 0;
-  Element *elements = new Element[size];
-
-  string menu[] = {
-      "Чтение из консоли",
-      "Чтение из файла",
-      "Показать все элементы",
-      "Показать все элементы металлы ", 
-      "Добавить элемент",
-      "Изменить элемент",
-      "Записать в JSON файл"
-      };
-  int menu_count = sizeof(menu) / sizeof(menu[0]);
-
-  cout << "Начало работы программы" << endl;
-  int select = -1;
-  do {
-    cout << endl << "Меню: " << endl;
-
-    // Выводим меню программы
-    for (int i = 0; i < menu_count; i++) {
-      cout << i << ". " << (menu[i]) << endl;
-    }
-
-    cout << endl
-         << "Выберите номер (любое другое число это выход из программы): ";
-    if (!(cin >> select)) {
-      select = -1;
-    }
-
-    switch (select)
-    {
-        case 0:
-            readFromConsole(elements, size);
-            break;
-
-        case 1:
-            readFromJSON(elements, size);
-            break;
-        
-        case 2:
-            displayAllElements(elements, size);
-            break;
-
-        case 3:
-            displayMetals(elements, size);
-            break;
-
-        case 4:
-            addElement(elements, size);
-            break;
-
-        case 5:
-            editElement(elements, size);
-            break;
-        
-        case 6:
-            writeToJSON(elements, size);
-            break;
-
-        default:
-            cout << "Выход из приложения" << endl;
-            break;
-    }
-
-    cout << endl;
-
-  } while (select >= 0 && select < menu_count);
-
-  // Освобождение памяти
-  delete[] elements;
-
-  return 0;
+    setlocale(LC_ALL, "Russian");
+    Application app;
+    app.run();
+    return 0;
 }
