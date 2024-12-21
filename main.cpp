@@ -36,8 +36,8 @@ private:
 
     void readFromConsole() {
         Element element;
-        element.readFromConsole();
-        container.addElement(element);
+        cin >> element;
+        container += element;
     }
 
     void readFromJSON() {
@@ -57,8 +57,8 @@ private:
 
     void addElement() {
         Element element;
-        element.readFromConsole();
-        container.addElement(element);
+        cin >> element;
+        container += element;
     }
 
     void editElement() {
@@ -68,7 +68,7 @@ private:
             std::cout << "Неверный индекс. Повторите ввод: ";
         }
         Element updatedElement;
-        updatedElement.readFromConsole();
+        cin >> updatedElement;
         container.editElement(index, updatedElement);
     }
 
