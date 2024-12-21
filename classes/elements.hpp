@@ -37,6 +37,8 @@ public:
 
     // Операторы
     void operator+=(const Element& element);
+    friend ofstream& operator<<(ofstream& out, const ElementContainer& cont);
+    friend ifstream& operator>>(ifstream& in, ElementContainer& cont);
 };
 
 #endif

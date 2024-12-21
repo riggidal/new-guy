@@ -43,6 +43,7 @@ ostream& operator<<(ostream& out, Element& el){
         << "Тип:\t\t" << el.type << endl
         << "Масса\t\t" << fixed << setprecision(1) << el.mass << endl
         << "Элекронная конфигурация: " << el.electrons << endl;
+    return out;
 }
 
 void Element::shortDisplay(){

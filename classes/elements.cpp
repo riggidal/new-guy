@@ -65,21 +65,13 @@ void ElementContainer::findElementByMass(const int& mass) const {
 }
 
 void ElementContainer::writeToJSON(const string& filename) const {
-    json jsonFile;
-    jsonFile["count"] = size;
-
-    for (size_t i = 0; i < size; ++i) {
-        jsonFile["elements"].push_back(elements[i]->getJSON());
-    }
-
     ofstream outFile(filename);
     if (!outFile) {
         cerr << "Ошибка открытия файла: " << filename << endl;
         return;
     }
 
-    outFile << jsonFile.dump(4); // Pretty print with 4-space indent
-    outFile.close();
+    outFile << *this ;
 }
 
 void ElementContainer::readFromJSON(const string& filename) {
@@ -89,29 +81,14 @@ void ElementContainer::readFromJSON(const string& filename) {
         return;
     }
 
-    json jsonFile;
-    inFile >> jsonFile;
-
-    size_t newSize = jsonFile["count"];
-    for (size_t i = 0; i < size; ++i) {
-        delete elements[i];
-    }
-    delete[] elements;
-
-    size = 0;
-    capacity = newSize > 10 ? newSize : 10;
-    elements = new Element*[capacity];
-
-    for (const auto& elementData : jsonFile["elements"]) {
-        this->operator+=(Element(elementData));
-    }
+    inFile >> *this;
 }
 
 void ElementContainer::displayElements() const {
     cout << "Все элементы:" << endl;
     cout << string(80, '=') << endl; // Разделитель
     for (size_t i = 0; i < size; ++i) {
-        cout << elements[i];
+        cout << *elements[i];
         cout << string(80, '=') << endl; // Разделитель
     }
 }
@@ -124,4 +101,38 @@ void ElementContainer::displayMetals() const {
            elements[i]-> shortDisplay();
         }
     }
+}
+
+ofstream& operator<<(ofstream& out, const ElementContainer& cont) {
+    json jsonFile;
+    jsonFile["count"] = cont.size;
+
+    for (size_t i = 0; i < cont.size; ++i) {
+        jsonFile["elements"].push_back(cont.elements[i]->getJSON());
+    }
+
+    out << jsonFile.dump(4); // Pretty print with 4-space indent
+
+    return out;
+}
+
+ifstream& operator>>(ifstream& in, ElementContainer& cont) {
+    json jsonFile;
+    in >> jsonFile;
+
+    size_t newSize = jsonFile["count"];
+    for (size_t i = 0; i < cont.size; ++i) {
+        delete cont.elements[i];
+    }
+    delete[] cont.elements;
+
+    cont.size = 0;
+    cont.capacity = newSize > 10 ? newSize : 10;
+    cont.elements = new Element*[cont.capacity];
+
+    for (const auto& elementData : jsonFile["elements"]) {
+        cont += (Element(elementData));
+    }
+
+    return in;
 }
