@@ -20,7 +20,6 @@ public:
     ~ElementContainer();
 
     // Методы управления коллекцией
-    void addElement(const Element& element);
     void removeElement(size_t index);
     void editElement(size_t index, const Element& updatedElement);
     void findElementByMass(const int& mass) const;
@@ -35,6 +34,9 @@ public:
 
     // Геттеры
     int getSize() { return size; }
+
+    // Операторы
+    void operator+=(const Element& element);
 };
 
 #endif

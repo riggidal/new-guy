@@ -29,7 +29,7 @@ void ElementContainer::resize() {
     capacity = newCapacity;
 }
 
-void ElementContainer::addElement(const Element& element) {
+void ElementContainer::operator+=(const Element& element) {
     if (size >= capacity) {
         resize();
     }
@@ -103,7 +103,7 @@ void ElementContainer::readFromJSON(const string& filename) {
     elements = new Element*[capacity];
 
     for (const auto& elementData : jsonFile["elements"]) {
-        addElement(Element(elementData));
+        this->operator+=(Element(elementData));
     }
 }
 
@@ -111,7 +111,7 @@ void ElementContainer::displayElements() const {
     cout << "Все элементы:" << endl;
     cout << string(80, '=') << endl; // Разделитель
     for (size_t i = 0; i < size; ++i) {
-        elements[i]->display();
+        cout << elements[i];
         cout << string(80, '=') << endl; // Разделитель
     }
 }

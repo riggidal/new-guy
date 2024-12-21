@@ -24,13 +24,9 @@ class Element {
         Element();
         Element(json);
 
-
-        void readFromConsole();
-
-        void display();
         void shortDisplay();
 
-        // Гетеры
+        // Геттеры
         string getName() { return name; };
         string getSymbol() { return symbol; };
         int getNumber() { return number; };
@@ -40,7 +36,7 @@ class Element {
 
         json getJSON();
         
-        // Сетеры
+        // Сеттеры
         void setName(string value) { name = value; };
         void setSymbol(string value) { symbol = value; };
         void setNumber(int value) { number = value; };
@@ -49,6 +45,11 @@ class Element {
         void setElectrons(string value) { electrons = value; };
 
         bool isType(string);
+
+        // Операторы
+        bool operator==(Element& el);
+        friend istream& operator>>(istream& in, Element& el);
+        friend ostream& operator<<(ostream& out, Element& el);
 };
 
 #endif
